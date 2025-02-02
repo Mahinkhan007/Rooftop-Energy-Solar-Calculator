@@ -50,5 +50,61 @@ body {
   border: 5px solid #000;
 }
 
+.card {
+  background-color: #fcd913;
+  color: black;
+  text-align: center;
+  height: 100%;
+  border: 2px solid #333;
+  border-radius: 20px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 70px;
+
+  border-radius: 20px;
+}
+
+.form-section {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.btn {
+  width: 100%;
+  max-width: 200px;
+  margin: 10px 0;
+}
+
+#result {
+  margin-top: 20px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.row.g-0 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
 @media (max-width: 768px) {
+  .card2 {
+    margin-top: 20px;
+  }
 }
