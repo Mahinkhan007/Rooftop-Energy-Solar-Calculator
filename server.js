@@ -58,12 +58,3 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCIYG6Sz11srpFNZdzO06QKeBcB0dXc7a8",
-//     authDomain: "solar-calculator-7110c.firebaseapp.com",
-//     projectId: "solar-calculator-7110c",
-//     storageBucket: "solar-calculator-7110c.firebasestorage.app",
-//     messagingSenderId: "16000100010",
-//     appId: "1:16000100010:web:92462ce883b24869d252d3"
-//   };
