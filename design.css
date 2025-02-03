@@ -3,9 +3,8 @@
 }
 
 hr {
-  border: 0; /* Removes default styling */
-  border-top: 4px solid #ffffff; /* Change the thickness (4px) and color (#fff) as needed */
-  /* Add margin for spacing */
+  border: 0;
+  border-top: 4px solid #ffffff;
 }
 
 .createSpace {
@@ -18,13 +17,13 @@ hr {
 
 h1 {
   font-size: 32px;
-  color: #fbc531;
+  color: #fcd913;
   font-family: sans-serif;
 }
 
 h2 {
   font-size: 28px;
-  color: #fbc531;
+  color: #fcd913;
   font-family: sans-serif;
 }
 h3 {
@@ -45,7 +44,7 @@ h3 {
 }
 
 .footer a {
-  color: #fbc531;
+  color: #fcd913;
   text-decoration: none;
 }
 
@@ -136,6 +135,20 @@ body {
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
+}
+
+.modal-content {
+  background-color: #fcd913;
+  color: black;
+  font-family: "Corbel Light", sans-serif;
+}
+
+.modal-title {
+  color: black;
+}
+
+.modal-body {
+  color: black;
 }
 
 @media (max-width: 768px) {

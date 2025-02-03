@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const admin = require("firebase-admin");
 
-// Initialize Firebase Admin SDK
 admin.initializeApp({
   credential: admin.credential.cert({
     projectId: process.env.FIREBASE_PROJECT_ID,

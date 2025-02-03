@@ -17,7 +17,17 @@ document
       });
 
       const result = await response.json();
-      alert(result.message);
+      if (result.message) {
+        // Show the pop up with the message thanks
+        const myModal = new bootstrap.Modal(
+          document.getElementById("thankYouModal")
+        );
+        myModal.show();
+
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+      }
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to submit request");
