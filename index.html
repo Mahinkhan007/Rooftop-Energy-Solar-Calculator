@@ -22,6 +22,9 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <link rel="stylesheet" href="design.css" />
     <script src="index.js" defer></script>
   </head>
@@ -87,19 +90,23 @@
                       </div>
         
                      
-                      <button type="submit" class="btn btn-dark">Calculate</button>
+                      <button type="submit" id="calculateBtn" class="btn btn-dark">Calculate</button>
                     </form>
         
                    
-                    <!-- <div id="result" class="mt-5" style="display:none;">
+                    <div id="result" class="mt-5 text-center" style="display:none;">
                       <h5>Solar Calculator Results:</h5>
                       <p><strong>System Size:</strong> <span id="systemSize"></span> kWp</p>
                       <p><strong>Total System Cost:</strong> RM <span id="totalCost"></span></p>
                       <p><strong>Target Monthly Payment (Loan):</strong> RM <span id="targetPayment"></span></p>
-        
-                     
-                      <button id="printButton" class="btn btn-info mt-3" onclick="printQuote()">Print Quote</button>
-                    </div> -->
+                  
+                      
+                      <div class="button-container">
+                          <button id="printButton" class="btn btn-dark" onclick="printQuote()">Print Quote</button>
+                          <button id="recalculateButton" class="btn btn-warning mt-3" onclick="resetCalculator()">Recalculate</button>
+                      </div>
+                  </div>
+                  
                   </div>
                 </div>
               </div>
