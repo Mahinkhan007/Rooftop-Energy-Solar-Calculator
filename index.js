@@ -34,54 +34,89 @@ document
     }
   });
 
-// document
-//   .getElementById("solarCalculatorForm")
-//   .addEventListener("submit", function (event) {
-//     event.preventDefault();
+document
+  .getElementById("solarCalculatorForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-//     const TNB_TARIFF = 0.509;
-//     const SOLAR_PANEL_COST = 3000;
-//     const PEAK_SUN_HOURS = 3;
-//     const SYSTEM_EFFICIENCY = 0.8;
-//     const INTEREST_RATE = 0.05;
-//     const TARGET_SAVINGS = 0.3;
+    const monthlyBill = parseFloat(
+      document.getElementById("monthlyBill").value
+    );
+    const location = document.getElementById("location").value;
 
-//     let monthlyBill = parseFloat(document.getElementById("monthlyBill").value);
+    if (isNaN(monthlyBill) || monthlyBill <= 0) {
+      alert("Please enter a valid monthly bill amount.");
+      return;
+    }
 
-//     if (isNaN(monthlyBill) || monthlyBill <= 0) {
-//       alert("Please enter a valid monthly bill amount.");
-//       return;
-//     }
+    const TNB_TARIFF = 0.509;
+    const SOLAR_PANEL_COST = 3000;
+    const PEAK_SUN_HOURS = 3;
+    const SYSTEM_EFFICIENCY = 0.8;
+    const INTEREST_RATE = 0.05;
+    const TARGET_SAVINGS = 0.7; // 30% savings is calculated here
+    //following formulas from assessment questions
+    const monthlyEnergy = monthlyBill / TNB_TARIFF;
+    const dailyEnergy = monthlyEnergy / 30;
+    const systemSize = dailyEnergy / (PEAK_SUN_HOURS * SYSTEM_EFFICIENCY);
+    const totalSystemCost = systemSize * SOLAR_PANEL_COST;
+    const targetMonthlyPayment = monthlyBill * TARGET_SAVINGS;
 
-//     // System Sizing Calculation
-//     let monthlyEnergy = monthlyBill / TNB_TARIFF;
-//     let dailyEnergy = monthlyEnergy / 30;
-//     let systemSize = dailyEnergy / (PEAK_SUN_HOURS * SYSTEM_EFFICIENCY);
+    document.getElementById("solarCalculatorForm").style.display = "none";
+    document.getElementById("result").style.display = "block";
 
-//     // Cost Calculation
-//     let totalSystemCost = systemSize * SOLAR_PANEL_COST;
+    document.getElementById("systemSize").textContent = systemSize.toFixed(2);
+    document.getElementById("totalCost").textContent =
+      totalSystemCost.toFixed(2);
+    document.getElementById("targetPayment").textContent =
+      targetMonthlyPayment.toFixed(2);
 
-//     // Loan Calculation (Target Monthly Payment)
-//     let targetMonthlyPayment = monthlyBill * (1 - TARGET_SAVINGS);
+    document.getElementById("recalculateButton").style.display = "block";
+  });
 
-//     // Display Results
-//     let cardBody = document.querySelector(".card1 .card-body");
-//     cardBody.innerHTML = `
-//         <h5>Your Quote:</h5>
-//         <p><strong>System Size:</strong> ${systemSize.toFixed(2)} kWp</p>
-//         <p><strong>Total System Cost:</strong> RM ${totalSystemCost.toFixed(
-//           2
-//         )}</p>
-//         <p><strong>Target Monthly Payment:</strong> RM ${targetMonthlyPayment.toFixed(
-//           2
-//         )}</p>
-//         <button id="recalculateButton" class="btn btn-dark mt-3">Recalculate</button>
-//     `;
+document
+  .getElementById("recalculateButton")
+  .addEventListener("click", function () {
+    document.getElementById("solarCalculatorForm").style.display = "block";
+    document.getElementById("result").style.display = "none";
+    document.getElementById("recalculateButton").style.display = "none";
 
-//     // Recalculate button event listener
-//     document
-//       .getElementById("recalculateButton")
-//       .addEventListener("click", function () {
-//         location.reload();
-//       });
-//   });
+    document.getElementById("monthlyBill").value = "";
+    document.getElementById("location").value = "";
+  });
+
+function printQuote() {
+  const printContent = document.getElementById("result");
+  const buttons = printContent.querySelector(".button-container");
+
+  // Hide buttons before printing
+  if (buttons) buttons.style.display = "none";
+
+  // Use jsPDF to print that i imported using npm
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.text("Solar Calculator Results", 10, 10);
+  doc.text(
+    `System Size: ${document.getElementById("systemSize").textContent} kWp`,
+    10,
+    20
+  );
+  doc.text(
+    `Total System Cost: RM ${document.getElementById("totalCost").textContent}`,
+    10,
+    30
+  );
+  doc.text(
+    `Target Monthly Payment (Loan): RM ${
+      document.getElementById("targetPayment").textContent
+    }`,
+    10,
+    40
+  );
+
+  doc.save("solar_calculator_results.pdf");
+
+  // Show buttons again after printing
+  if (buttons) buttons.style.display = "flex";
+}

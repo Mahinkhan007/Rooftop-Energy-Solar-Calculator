@@ -151,6 +151,19 @@ body {
   color: black;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.button-container .btn {
+  width: 200px;
+  font-family: "Corbel Light", sans-serif;
+  margin-bottom: 15px;
+}
+
 @media (max-width: 768px) {
   .cardspace {
     margin-top: 100px;
